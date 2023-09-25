@@ -1,7 +1,6 @@
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-
 import CommunityCard from "@/components/cards/CommunityCard";
 
 import { fetchCommunities } from "@/lib/actions/community.actions";
@@ -26,14 +25,13 @@ async function Page({
 
   return (
     <>
-      <h1 className='head-text'>Communities</h1>
+      <h1 className="head-text">Communities</h1>
 
-      <div className='mt-5'>
-              </div>
+      <div className="mt-5"></div>
 
-      <section className='mt-9 flex flex-wrap gap-4'>
+      <section className="mt-9 flex flex-wrap gap-4">
         {result.communities.length === 0 ? (
-          <p className='no-result'>No Result</p>
+          <p className="no-result">No Result</p>
         ) : (
           <>
             {result.communities.map((community) => (
@@ -50,7 +48,6 @@ async function Page({
           </>
         )}
       </section>
-
     </>
   );
 }
