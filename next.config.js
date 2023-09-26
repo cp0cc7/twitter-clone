@@ -1,40 +1,37 @@
-/** @type {import('next').NextConfig} */
+// next.config.js
+
 const nextConfig = {
-    typescript: {
-        ignoreBuildErrors: true,
-    },
-    experimental: {
-        serverActions: true,
-        serverComponentsExternalPackages: ["mongoose"],
-    },
-    images: {
-        remotePatterns: [
-            {
-                protocol: "https",
-                hostname: "img.clerk.com",
-            },
-            {
-                protocol: "https",
-                hostname: "images.clerk.dev",
-            },
-            {
-                protocol: "https",
-                hostname: "uploadthing.com",
-            },
-            {
-                protocol: "https",
-                hostname: "placehold.co",
-            },
-            // Add the new domain here
-            {
-                protocol: "https",
-                hostname: "utfs.io",
-            },
-        ],
-        typescript: {
-            ignoreBuildErrors: true,
-        },
-    },
+  experimental: {
+    serverActions: true,
+    serverComponentsExternalPackages: ["mongoose"],
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img.clerk.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.clerk.dev",
+      },
+      {
+        protocol: "https",
+        hostname: "uploadthing.com",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+      },
+      {
+        protocol: "https", // Add this block for 'utfs.io'
+        hostname: "utfs.io",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
