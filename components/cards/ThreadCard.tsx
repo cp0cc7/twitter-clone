@@ -6,6 +6,12 @@ import Link from "next/link";
 import { formatDateString } from "@/lib/utils";
 import DeleteThread from "../forms/DeleteThread";
 import LikeThread from "../forms/LikeThread";
+import InlineFollowUserButton from "../forms/InlineFollowUserButton";
+import {
+  fetchUser,
+  fetchUserFollowing,
+  fetchUserFollowers,
+} from "@/lib/actions/useractions";
 
 interface Props {
   id: string;
@@ -32,7 +38,7 @@ interface Props {
   likes: Array<any>; //this is never actually initialised anywhere, its just constantly referenced but only ever with its param type, not the actual started object
 }
 
-function ThreadCard({
+async function ThreadCard({
   id,
   currentUserId,
   parentId,
@@ -47,7 +53,7 @@ function ThreadCard({
   return (
     <article
       className={`flex w-full flex-col rounded-xl ${
-        isComment ? "px-0 xs:px-7" : "bg-dark-2 p-7"
+        isComment ? "px-0 xs:px-7" : "bg-main-color p-7"
       }`}
     >
       <div className="flex items-start justify-between">
@@ -71,6 +77,14 @@ function ThreadCard({
                 {author.name}
               </h4>
             </Link>
+            {currentUserId !== author.id && (
+              <InlineFollowUserButton
+                currentUserID={currentUserId}
+                targetUserID={author.id}
+                targetFollowing={await fetchUserFollowing(author.id)} //this is where the follower lists need to be injected again
+                targetFollowers={await fetchUserFollowers(author.id)}
+              />
+            )}
 
             <p className="mt-2 text-small-regular text-light-2">{content}</p>
 

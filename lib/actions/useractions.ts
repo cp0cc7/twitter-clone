@@ -22,6 +22,28 @@ export async function fetchUser(userId: string) {
   }
 }
 
+export async function fetchUserFollowing(userId: string) {
+  try{
+    connectToDB();
+
+    const user = await User.findOne({ id: userId})
+    return user.following as Array<any>
+  } catch (error: any){
+    throw new Error(`Failed to fetch user data: ${error.message}`);
+  }
+}
+
+export async function fetchUserFollowers(userId: string) {
+  try{
+    connectToDB();
+
+    const user = await User.findOne({ id: userId})
+    return user.followers as Array<any>
+  } catch (error: any){
+    throw new Error(`Failed to fetch user data: ${error.message}`);
+  }
+}
+
 interface Params {
   userId: string;
   username: string;
@@ -60,6 +82,34 @@ export async function updateUser({
   } catch (error: any) {
     throw new Error(`Failed to create/update user: ${error.message}`);
   }
+}
+
+export async function followUser(userID: string, targetUserID: string){
+  try{
+    const thisUser = await User.findOne({ id: userID })
+    const userToFollow = await User.findOne({ id: targetUserID });
+    const notFollowing = !thisUser.following.includes(targetUserID)
+    if(notFollowing){
+      thisUser.following.push(targetUserID);
+      userToFollow.followers.push(userID);
+    } else {
+      thisUser.following.pop(targetUserID);
+      userToFollow.followers.pop(userID);
+    }
+    await thisUser.save();
+    await userToFollow.save();
+    switch(notFollowing){
+      case true:
+        return true;
+
+      case false:
+        return false;
+
+    }
+  } catch(err) {
+    throw new Error("could not follow user");
+  }
+  
 }
 
 export async function fetchUserPosts(userId: string) {

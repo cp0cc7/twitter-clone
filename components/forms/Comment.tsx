@@ -64,7 +64,7 @@ function Comment({ threadId, currentUserImg, currentUserId }: Props) {
                   className="rounded-full object-cover"
                 />
               </FormLabel>
-              <FormControl className="border-none bg-transparent">
+              <FormControl className="border-none bg-transparent ">
                 <Input
                   type="text"
                   {...field}

@@ -24,7 +24,6 @@ const LikeThread = ({
     var currentUserLiked = false;
     if (likes.length > 0) {
       currentUserLiked = likes.includes(currentUserId); //when likes unitialised, it doesn't like this, but need to fix the try/catch so that if it fails, the likes thing is still returned as blank.
-      console.warn("Contents of likes: " + likes);
     }
 
     return (

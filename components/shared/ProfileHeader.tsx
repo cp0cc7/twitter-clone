@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import FollowUserButton from "../forms/FollowUserButton";
 
 interface Props {
   accountId: string;
@@ -9,9 +10,11 @@ interface Props {
   imgUrl: string;
   bio: string;
   type?: string;
+  following: Array<any>;
+  followers: Array<any>;
 }
 
-function ProfileHeader({
+const ProfileHeader = ({
   accountId,
   authUserId,
   name,
@@ -19,7 +22,9 @@ function ProfileHeader({
   imgUrl,
   bio,
   type,
-}: Props) {
+  following,
+  followers,
+}: Props) => {
   return (
     <div className="flex w-full flex-col justify-start">
       <div className="flex items-center justify-between">
@@ -54,6 +59,16 @@ function ProfileHeader({
             </div>
           </Link>
         )}
+        {accountId !== authUserId && type !== "Community" && (
+          <div className="flex cursor-pointer gap-3 rounded-lg bg-dark-3 px-4 py-2">
+            <FollowUserButton
+              currentUserID={authUserId}
+              targetUserID={accountId}
+              targetFollowing={following}
+              targetFollowers={followers}
+            />
+          </div>
+        )}
       </div>
 
       <p className="mt-6 max-w-lg text-base-regular text-light-2">{bio}</p>
@@ -61,6 +76,6 @@ function ProfileHeader({
       <div className="mt-12 h-0.5 w-full bg-dark-3" />
     </div>
   );
-}
+};
 
 export default ProfileHeader;
