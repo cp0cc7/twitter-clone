@@ -18,16 +18,6 @@ async function Page({ params }: { params: { id: string } }) {
 
   return (
     <section>
-      <ProfileHeader //replace this with a new communityheader rather than profile - this will circumvent the followers and following issue, unless you want to use this as the members and moderators thing?
-        accountId={communityDetails.createdBy.id}
-        authUserId={user.id}
-        name={communityDetails.name}
-        username={communityDetails.username}
-        imgUrl={communityDetails.image}
-        bio={communityDetails.bio}
-        type="Community"
-      />
-
       <div className="mt-9">
         <Tabs defaultValue="threads" className="w-full">
           <TabsList className="tab">
