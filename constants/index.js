@@ -1,40 +1,36 @@
+//just some constants to save time 
+
 export const sidebarLinks = [
     {
-      imgURL: "/assets/home.svg",
+      imgURL: "/assets/homepage-svgrepo-com.svg",
       route: "/",
-      label: "Home",
+      label: "",
     },
     {
-      imgURL: "/assets/search.svg",
+      imgURL: "/assets/search-alt-2-svgrepo-com.svg",
       route: "/search",
-      label: "Search",
+      label: "",
     },
     {
-      imgURL: "/assets/heart.svg",
-      route: "/activity",
-      label: "Activity",
+      imgURL: "/assets/calendar-lines-alt-svgrepo-com.svg",
+      route: "/events",
+      label: "",
     },
     {
-      imgURL: "/assets/create.svg",
+      imgURL: "/assets/new-svgrepo-com.svg",
       route: "/create-thread",
-      label: "Create Thread",
+      label: "",
     },
-    {
-      imgURL: "/assets/community.svg",
-      route: "/communities",
-      label: "Communities",
-    },
-    {
-      imgURL: "/assets/user.svg",
+      {
+      imgURL: "/assets/profile-minus-1340-svgrepo-com.svg",
       route: "/profile",
-      label: "Profile",
+      label: "",
     },
+
   ];
   
   export const profileTabs = [
-    { value: "threads", label: "Threads", icon: "/assets/reply.svg" },
-    { value: "replies", label: "Replies", icon: "/assets/members.svg" },
-    { value: "tagged", label: "Tagged", icon: "/assets/tag.svg" },
+    { value: "threads", label: "Posts", icon: "/assets/message.png" },
   ];
   
   export const communityTabs = [

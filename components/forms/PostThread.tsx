@@ -39,7 +39,6 @@ function PostThread({ userId }: Props) {
   });
 
   const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
-    //At the root thread creation event, a new field is initialised as an empty array within it - ready to store the likes.
     await createThread({
       text: values.thread,
       author: userId,
@@ -63,9 +62,9 @@ function PostThread({ userId }: Props) {
           render={({ field }) => (
             <FormItem className="flex w-full flex-col gap-3">
               <FormLabel className="text-base-semibold text-light-2">
-                Content
+                Subject
               </FormLabel>
-              <FormControl className="no-focus border border-dark-4 bg-main-color text-light-1">
+              <FormControl className="no-focus border border-white bg-main-color text-light-1">
                 <Textarea rows={15} {...field} />
               </FormControl>
               <FormMessage />
@@ -73,8 +72,8 @@ function PostThread({ userId }: Props) {
           )}
         />
 
-        <Button type="submit" className="bg-primary-500">
-          Post Thread
+        <Button type="submit" className="bg-post-color">
+          Post Blog
         </Button>
       </form>
     </Form>

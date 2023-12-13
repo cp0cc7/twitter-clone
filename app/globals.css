@@ -4,25 +4,30 @@
 
 @layer components {
 
+
+
+    
 .bg-main-color{
-    background-color:#282A36;
+    background-color: rgb(135, 37, 50);
+}
+
+.bg-post-color{
+    background-color: rgb(162, 116, 121)
 }
 
 .bg-container-color {
-    background-color: #6272A4;
+    background-color: rgb(135, 37, 50);
 }
 
 .bg-btn-color {
-    background-color: #636193;
+    background-color: rgb(193, 163, 166);
 }
 
 .bg-activity-color{
-    background-color: #4B5975;
+    background-color: rgb(193, 163, 166);
 }
 
-.bg-threadbar-color{
-    background-color: #5A678F;
-}
+
 
 
     /* main */
@@ -42,7 +47,7 @@
 
     /* No Result */
     .no-result {
-        @apply text-center !text-base-regular text-violet-300;
+        @apply text-center !text-base-regular text-light-1;
     }   
 
     /* Community Card */
@@ -51,12 +56,12 @@
     }
 
     .community-card_btn {
-        @apply rounded-lg bg-primary-500 px-5 py-1.5 text-small-regular !text-light-1 !important;
+        @apply rounded-lg bg-white  px-5 py-1.5 text-small-regular !text-light-1 !important;
     }
 
     /* thread card  */
     .thread-card_bar {
-        @apply relative mt-2 w-0.5 grow rounded-full bg-threadbar-color;
+        @apply relative mt-2 w-0.5 grow rounded-full bg-main-color;
     }
 
     /* User card */
@@ -129,12 +134,12 @@
     }
 
     .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #5c5c7b;
+        background: rgb(193, 163, 166);
         border-radius: 50px;
     }
 
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #7878a3;
+        background: rgb(193, 163, 166);
     }
 }
 
@@ -177,5 +182,122 @@
 }
 
 .comment-form_btn {
-    @apply rounded-3xl bg-primary-500 px-8 py-2 !text-small-regular text-light-1 max-xs:w-full !important;
+    @apply rounded-3xl bg-post-color px-8 py-2 !text-small-regular text-light-1 max-xs:w-full !important;
 }
+
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap&subset=latin');
+
+.lato {
+  font-family: 'Lato', sans-serif;
+  /* Additional styles if needed */
+}
+
+
+
+/* Add your custom styles for the calendar */
+.custom-calendar {
+    width: 300px; /* Example width */
+    font-family: Arial, sans-serif; /* Example font */
+    border: 1px solid #ccc; /* Example border */
+    border-radius: 5px; /* Example border radius */
+  }
+  
+  .custom-calendar .react-calendar__tile--now {
+    background-color: #ffcc00; /* Example style for the current day */
+  }
+  
+  .custom-calendar .react-calendar__tile--active {
+    background-color: #e6e6e6; /* Example style for the selected day */
+  }
+  
+  /* Container styles for the calendar */
+  .custom-calendar-container {
+    margin-right: 20px; /* Example margin for the container */
+  }
+  
+  /* Add your custom styles for the calendar */
+.custom-calendar {
+    /* Your custom calendar styles */
+  }
+  
+  .custom-calendar-container {
+    /* Container styles for the calendar */
+  }
+  
+  /* Styles for Add Event box */
+  .activity-card {
+    margin-bottom: 10px; /* Adjusted margin */
+  }
+  
+  .activity-card input[type="text"] {
+    width: 150px; /* Example width for the input */
+    padding: 8px; /* Example padding for the input */
+  }
+  
+  .comment-form_btn {
+    width: 100px; /* Example width for the button */
+    padding: 6px; /* Example padding for the button */
+    background-color: rgb(135, 37, 50); /* Example background color for the button */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+  }
+  
+  /* Styles for added events */
+  .user-card {
+    background-color: rgb(135, 37, 50); /* Example background color for added events */
+    color: white; /* Text color */
+    padding: 8px; /* Example padding for added events */
+    margin-bottom: 5px; /* Adjusted margin */
+  }
+  
+  /* Add your custom styles for the calendar */
+.custom-calendar {
+    /* Your custom calendar styles */
+  }
+  
+  .custom-calendar-container {
+    /* Container styles for the calendar */
+  }
+  
+  /* Styles for Add Event box */
+  .activity-card {
+    margin-bottom: 10px;
+    padding-right: 5px; /* Adjusted margin */
+  }
+  
+  .input-text {
+    width: 150px; /* Example width for the input */
+    padding: 8px; /* Example padding for the input */
+    background-color: transparent; /* Set the background color to transparent */
+    border: none; /* Remove the border */
+    border-bottom: 1px solid #ccc; /* Add a bottom border for visibility */
+    outline: none; /* Remove the outline */
+  }
+  
+  
+  .comment-form_btn {
+    white-space: nowrap; /* Prevent text from wrapping */
+    padding: 6px 12px; /* Example padding for the button - adjust as needed */
+    background-color: rgb(162, 116, 121); /* Example background color for the button */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    display: inline-block; /* Ensure button is inline */
+  }
+  
+  
+  /* Styles for added events */
+  .user-card {
+    background-color: rgb(135, 37, 50); /* Example background color for added events */
+    color: white; /* Text color */
+    padding: 8px; /* Example padding for added events */
+    margin-bottom: 5px; /* Adjusted margin */
+  }
+  
+  /* CSS file or your styles */
+.thread-card-wrapper {
+    border: 1px solid #ccc; /* Adjust border styles as needed */
+    padding: 10px; /* Optional: Add padding around each ThreadCard */
+    /* Other styles... */
+  }
+  

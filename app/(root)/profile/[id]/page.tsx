@@ -16,55 +16,52 @@ async function Page({ params }: { params: { id: string } }) {
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
+  // Filter out the "Posts" tab from the rendering
+  const filteredTabs = profileTabs.filter((tab) => tab.label !== "Posts");
+
   return (
     <section>
-      <ProfileHeader
+      <ProfileHeader //added forms and house here
         accountId={userInfo.id}
         authUserId={user.id}
         name={userInfo.name}
         username={userInfo.username}
         imgUrl={userInfo.image}
         bio={userInfo.bio}
-        following={userInfo.following ? userInfo.following : new Array<any>()} //make a new array to fill the gap if the userInfo scrape couldn't find it.
-        followers={userInfo.followers ? userInfo.followers : new Array<any>()}
+        form={userInfo.form ? userInfo.form : ""} //added for validation
+        house={userInfo.house ? userInfo.house : ""}
+        following={userInfo.following ? userInfo.following : []}
+        followers={userInfo.followers ? userInfo.followers : []}
       />
 
       <div className="mt-9">
         <Tabs defaultValue="threads" className="w-full">
           <TabsList className="tab">
-            {profileTabs.map((tab) => (
-              <TabsTrigger key={tab.label} value={tab.value} className="tab">
-                <Image
-                  src={tab.icon}
-                  alt={tab.label}
-                  width={24}
-                  height={24}
-                  className="object-contain"
-                />
-                <p className="max-sm:hidden">{tab.label}</p>
-
-                {tab.label === "Threads" && (
-                  <p className="ml-1 rounded-sm bg-light-4 px-2 py-1 !text-tiny-medium text-light-2">
-                    {userInfo.threads.length}
-                  </p>
-                )}
-              </TabsTrigger>
-            ))}
+            {filteredTabs.map(
+              (
+                tab //hiding profile tab as not using it
+              ) => (
+                <TabsTrigger key={tab.label} value={tab.value} className="tab">
+                  <Image
+                    src={tab.icon}
+                    alt={tab.label}
+                    width={24}
+                    height={24}
+                    className="object-contain"
+                  />
+                  <p className="max-sm:hidden">{tab.label}</p>
+                </TabsTrigger>
+              )
+            )}
           </TabsList>
-          {profileTabs.map((tab) => (
-            <TabsContent
-              key={`content-${tab.label}`}
-              value={tab.value}
-              className="w-full text-light-1"
-            >
-              {/* @ts-ignore */}
-              <ThreadsTab
-                currentUserId={user.id}
-                accountId={userInfo.id}
-                accountType="User"
-              />
-            </TabsContent>
-          ))}
+          <TabsContent value="threads" className="w-full text-light-1">
+            {/* Render the Posts content */}
+            <ThreadsTab
+              currentUserId={user.id}
+              accountId={userInfo.id}
+              accountType="User"
+            />
+          </TabsContent>
         </Tabs>
       </div>
     </section>

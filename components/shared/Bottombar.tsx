@@ -1,4 +1,4 @@
-"use client";
+"use client"; //bottom bar is for the mobile version
 
 import Image from "next/image";
 import Link from "next/link";
@@ -21,7 +21,7 @@ function Bottombar() {
             <Link
               href={link.route}
               key={link.label}
-              className={`bottombar_link ${isActive && "bg-primary-500"}`}
+              className={`bottombar_link ${isActive && "bg-post-color"}`}
             >
               <Image
                 src={link.imgURL}
@@ -30,7 +30,6 @@ function Bottombar() {
                 height={16}
                 className="object-contain"
               />
-
               <p className="text-subtle-medium text-light-1 max-sm:hidden">
                 {link.label.split(/\s+/)[0]}
               </p>
@@ -41,5 +40,5 @@ function Bottombar() {
     </section>
   );
 }
-
+// link.label.split gets the first word of the links. for bigger phones or tablets
 export default Bottombar;

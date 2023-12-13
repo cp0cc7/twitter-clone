@@ -3,7 +3,7 @@
 const nextConfig = {
   experimental: {
     serverActions: true,
-    serverComponentsExternalPackages: ["mongoose"],
+    serverComponentsExternalPackages: ["mongoose"], //allowing the mongoose actions to render
   },
   eslint: {
     ignoreDuringBuilds: true,

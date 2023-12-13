@@ -36,17 +36,17 @@ const LikeThread = ({
               if (!currentUserLiked) {
                 document
                   .getElementById("LikeHeartImage")
-                  ?.setAttribute("src", "/assets/heart-filled.svg");
+                  ?.setAttribute("src", "/assets/heart-filled-svgrepo-com.svg");
               } else {
                 document
                   .getElementById("LikeHeartImage")
-                  ?.setAttribute("src", "/assets/heart-gray.svg");
+                  ?.setAttribute("src", "/assets/heart-svgrepo-com.svg");
               }
             }}
             src={
               currentUserLiked
-                ? "/assets/heart-filled.svg"
-                : "/assets/heart-gray.svg"
+                ? "/assets/heart-filled-svgrepo-com.svg"
+                : "/assets/heart-svgrepo-com.svg"
             }
             alt="heartfromdelegate"
             width={24}
@@ -54,7 +54,7 @@ const LikeThread = ({
             className="cursor-pointer object-contain"
           />
         }
-        <p className="mt-1 ml-35 text-subtle-medium text-gray-1">
+        <p className="mt-1 ml-35 text-subtle-medium text-white">
           {likes?.length || 0}
         </p>
       </>
@@ -67,14 +67,14 @@ const LikeThread = ({
         {
           <Image
             id={"LikeHeartImage"}
-            src={"/assets/heart-gray.svg"}
+            src={"/assets/heart-svgrepo-com.svg"}
             alt="heartfromdelegate"
             width={24}
             height={24}
             className="cursor-pointer object-contain"
           />
         }
-        <p className="mt-1 ml-35 text-subtle-medium text-gray-1">{"-"}</p>
+        <p className="mt-1 ml-35 text-subtle-medium text-white">{"-"}</p>
       </>
     );
   }

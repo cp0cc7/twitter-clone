@@ -50,10 +50,15 @@ async function ThreadCard({
   isComment,
   likes,
 }: Props) {
+  if (!author || !author.id) {
+    return null; // Return or render an appropriate fallback if author or author.id is null/undefined
+  }
   return (
     <article
-      className={`flex w-full flex-col rounded-xl ${
-        isComment ? "px-0 xs:px-7" : "bg-main-color p-7"
+      className={`flex w-full flex-col relative ${
+        isComment ? "px-0 xs:px-7" : "bg-post-color p-7"
+      } ${
+        !isComment ? "mb-[-35px] z-10 border border-gray-300" : "" // Add border styles for non-comment posts
       }`}
     >
       <div className="flex items-start justify-between">
@@ -67,8 +72,6 @@ async function ThreadCard({
                 className="cursor-pointer rounded-full"
               />
             </Link>
-
-            <div className="thread-card_bar" />
           </div>
 
           <div className="flex w-full flex-col">
@@ -97,7 +100,7 @@ async function ThreadCard({
 
               <Link href={`/thread/${id}`}>
                 <Image
-                  src="/assets/reply.svg"
+                  src="/assets/message.png"
                   alt="reply"
                   width={24}
                   height={24}
@@ -106,7 +109,7 @@ async function ThreadCard({
               </Link>
 
               {comments && comments.length > 0 ? (
-                <p className="mt-1 text-subtle-medium text-gray-1">
+                <p className="mt-1 text-subtle-medium text-white">
                   {comments.length} repl{comments.length === 1 ? "y" : "ies"}
                   {!isComment && comments.length > 0 && (
                     <div className="ml-3 flex items-center float-right">
@@ -126,9 +129,7 @@ async function ThreadCard({
                   )}
                 </p>
               ) : (
-                <p className="mt-1 text-subtle-medium text-gray-1">
-                  No replies
-                </p>
+                <p className="mt-1 text-subtle-medium text-white">No replies</p>
               )}
               <DeleteThread
                 threadId={JSON.stringify(id)}
@@ -139,7 +140,7 @@ async function ThreadCard({
               />
             </div>
             <div className={`${isComment && "mb-10"} mt-2 `}>
-              <p className=" text-subtle-medium text-gray-1 ">
+              <p className=" text-subtle-medium text-white ">
                 {formatDateString(createdAt)}
               </p>
             </div>

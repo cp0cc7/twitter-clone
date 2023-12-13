@@ -44,12 +44,14 @@ export async function fetchUserFollowers(userId: string) {
   }
 }
 
-interface Params {
+interface Params { //destructed the values of the object to make it less error prone. we can now pass the objects in any order. Links to account profile
   userId: string;
   username: string;
   name: string;
   bio: string;
   image: string;
+  house:string;
+  form: string;
   path: string;
 }
 
@@ -59,6 +61,8 @@ export async function updateUser({
   name,
   path,
   username,
+  house,
+  form,
   image,
 }: Params): Promise<void> {
   try {
@@ -70,10 +74,12 @@ export async function updateUser({
         username: username.toLowerCase(),
         name,
         bio,
+        house,
+        form,
         image,
         onboarded: true,
       },
-      { upsert: true }
+      { upsert: true } //updates and inserts user into db
     );
 
     if (path === "/profile/edit") {

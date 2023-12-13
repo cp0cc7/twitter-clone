@@ -24,7 +24,7 @@ const threadSchema = new mongoose.Schema({
   children: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Thread",
+      ref: "Thread", // allows one thread to have multiple children(comments)
     },
   ],
   likes: { //added likes as a required array type of any

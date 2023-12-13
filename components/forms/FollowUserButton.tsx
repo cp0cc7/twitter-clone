@@ -55,12 +55,12 @@ const FollowUserButton = ({
           alt="followuserfromdelegate"
           width={24}
           height={24}
-          className="cursor-pointer object-contain"
+          className="cursor-pointer object-contain bg-post-color"
         />
       }
       <p
         id="followingStatus"
-        className="mt-1 ml-35 text-subtle-medium text-gray-1"
+        className="mt-1 ml-35 text-subtle-medium text-white bg-post-color"
       >
         {targetFollowing.includes(currentUserID) &&
         !currentUserFollowingTargetUser

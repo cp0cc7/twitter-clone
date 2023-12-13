@@ -1,8 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { Lato } from "next/font/google";
 
 import "../globals.css";
 import LeftSidebar from "@/components/shared/LeftSidebar";
@@ -10,11 +10,9 @@ import Bottombar from "@/components/shared/Bottombar";
 import RightSidebar from "@/components/shared/RightSidebar";
 import Topbar from "@/components/shared/Topbar";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: "Mellow",
-  description: "A Next.js 13 Meta Mellow application",
+  title: "Calday Blog",
+  description: "Calday's social media platform",
 };
 
 export default function RootLayout({
@@ -29,9 +27,8 @@ export default function RootLayout({
       }}
     >
       <html lang="en">
-        <body className={inter.className}>
+        <body className="lato">
           <Topbar />
-
           <main className="flex flex-row">
             <LeftSidebar />
             <section className="main-container">
@@ -40,10 +37,10 @@ export default function RootLayout({
             {/* @ts-ignore */}
             <RightSidebar />
           </main>
-
           <Bottombar />
         </body>
       </html>
     </ClerkProvider>
   );
 }
+//Topbar with left and RightSidebar embedded into the interface, this ensures they stay on all pages. All of the Bars are imported from components/shared

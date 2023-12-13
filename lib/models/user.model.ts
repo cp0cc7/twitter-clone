@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+//creating the user fields
 const userSchema = new mongoose.Schema({
   id: {
     type: String,
@@ -16,10 +16,18 @@ const userSchema = new mongoose.Schema({
   },
   image: String,
   bio: String,
-  threads: [
+  house: String,
+  form: String,
+  threads: [ //one user can have multiple references to a specific thread
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Thread",
+    },
+  ],
+  events: [ //one user can have multiple references to a specific event(?)
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Event",
     },
   ],
   onboarded: {

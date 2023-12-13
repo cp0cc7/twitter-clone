@@ -12,10 +12,10 @@ import { threadId } from "worker_threads";
 export async function fetchPosts(pageNumber = 1, pageSize = 20) {
   connectToDB();
 
-  // Calculate the number of posts to skip based on the page number and page size.
+  // calculate number of posts to skip based on the page number size
   const skipAmount = (pageNumber - 1) * pageSize;
 
-  // Create a query to fetch the posts that have no parent (top-level threads) (a thread that is not a comment/reply).
+  // create a query to fetch the posts that have no parent (An original post not a reply)
   const postsQuery = Thread.find({ parentId: { $in: [null, undefined] } })
     .sort({ createdAt: "desc" })
     .skip(skipAmount)
@@ -70,7 +70,7 @@ export async function createThread({ text, author, communityId, path, likes }: P
     const createdThread = await Thread.create({
       text,
       author,
-      community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
+      community: communityIdObject, // assign communityId if provided or leave it null for personal account
       likes
     });
     
@@ -87,7 +87,7 @@ export async function createThread({ text, author, communityId, path, likes }: P
       });
     }
 
-    revalidatePath(path);
+    revalidatePath(path); //ensures changes update automatically
   } catch (error: any) {
     throw new Error(`Failed to create thread: ${error.message}`);
   }
