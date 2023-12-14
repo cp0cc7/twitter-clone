@@ -24,7 +24,7 @@ function DeleteEventButton({ eventId, currentUserId, organiserId }: Props) {
       height={18}
       className="cursor-pointer object-contain"
       onClick={async () => {
-        await deleteEvent(JSON.parse(eventId), pathname);
+        //await deleteEvent(JSON.parse(eventId), pathname);
       }}
     />
   );
