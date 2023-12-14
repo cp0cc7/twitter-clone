@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
-import { deleteEvent } from "@/lib/actions/event.actions";
+//import { deleteEvent } from "@/lib/actions/event.actions";
 
 interface Props {
   eventId: string;
