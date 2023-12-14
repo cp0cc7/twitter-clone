@@ -34,7 +34,7 @@ async function Page() {
       </p>
 
       <section className="mt-9 bg-main-color p-10">
-        <AccountProfile user={userData} btnTitle="Finish" />{" "}
+        <AccountProfile user={userData} btnTitle="Enter Calday Blog" />{" "}
         {/* Account profile form is added here as I use the same form to edit profile later on*/}
       </section>
     </main>

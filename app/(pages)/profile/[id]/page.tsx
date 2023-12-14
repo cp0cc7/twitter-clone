@@ -14,7 +14,7 @@ async function Page({ params }: { params: { id: string } }) {
   if (!user) return null;
 
   const userInfo = await fetchUser(params.id);
-  if (!userInfo?.onboarded) redirect("/onboarding");
+  if (!userInfo?.onboarded) redirect("/completeprofile");
 
   // Filter out the "Posts" tab from the rendering
   const filteredTabs = profileTabs.filter((tab) => tab.label !== "Posts");

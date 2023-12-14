@@ -4,7 +4,7 @@ import { currentUser } from "@clerk/nextjs";
 import Comment from "@/components/forms/Comment";
 import ThreadCard from "@/components/cards/ThreadCard";
 
-import { fetchThreadById } from "@/lib/actions/thread.actions";
+import { fetchBlogById } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/useractions";
 
 export const revalidate = 0;
@@ -16,9 +16,9 @@ async function page({ params }: { params: { id: string } }) {
   if (!user) return null;
 
   const userInfo = await fetchUser(user.id);
-  if (!userInfo?.onboarded) redirect("/onboarding");
+  if (!userInfo?.onboarded) redirect("/completeprofile");
 
-  const thread = await fetchThreadById(params.id);
+  const thread = await fetchBlogById(params.id);
 
   return (
     <section className="relative">

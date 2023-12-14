@@ -6,7 +6,11 @@ const eventSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  organiser: mongoose.Schema.Types.ObjectId,
+  organiser: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   imagePath: String,
   description: String,
   house: String,

@@ -45,7 +45,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
   const [files, setFiles] = useState<File[]>([]);
 
   const form = useForm<z.infer<typeof UserValidation>>({
-    //defining the form and setting the default values following documentation
+    //defining the form and setting the required values following documentation
     resolver: zodResolver(UserValidation),
     defaultValues: {
       profile_photo: user?.image ? user.image : "",
@@ -59,10 +59,9 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
   console.log("House:", user?.house);
   console.log("Form:", user?.form);
   const onSubmit = async (values: z.infer<typeof UserValidation>) => {
-    //ensuring values spaces are filled with minimum 3 characters(the user validation)
-    const blob = values.profile_photo;
+    const pic = values.profile_photo;
 
-    const hasImageChanged = isBase64Image(blob);
+    const hasImageChanged = isBase64Image(pic);
     if (hasImageChanged) {
       const imgRes = await startUpload(files);
 

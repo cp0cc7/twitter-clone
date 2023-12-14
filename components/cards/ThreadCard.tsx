@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { formatDateString } from "@/lib/utils";
-import DeleteThread from "../forms/DeleteThread";
 import LikeThread from "../forms/LikeThread";
 import InlineFollowUserButton from "../forms/InlineFollowUserButton";
 import {
@@ -12,6 +11,7 @@ import {
   fetchUserFollowing,
   fetchUserFollowers,
 } from "@/lib/actions/useractions";
+import DeleteBlog from "../forms/DeleteBlog";
 
 interface Props {
   id: string;
@@ -131,7 +131,7 @@ async function ThreadCard({
               ) : (
                 <p className="mt-1 text-subtle-medium text-white">No replies</p>
               )}
-              <DeleteThread
+              <DeleteBlog
                 threadId={JSON.stringify(id)}
                 currentUserId={currentUserId}
                 authorId={author.id}

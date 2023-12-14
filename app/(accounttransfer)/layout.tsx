@@ -26,8 +26,6 @@ export default function RootLayout({
     >
       <html lang="en">
         <body className={`${roboto.className} bg-main-color`}>{children}</body>{" "}
-        {/* turned into a template string where the inter class is a variable and
-        set colour to bg-main-color*/}
       </html>
     </ClerkProvider>
   );

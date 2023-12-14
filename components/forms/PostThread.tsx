@@ -17,8 +17,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
-import { ThreadValidation } from "@/lib/validations/thread";
-import { createThread } from "@/lib/actions/thread.actions";
+import { BlogValidation } from "@/lib/validations/thread";
+import { createBlog } from "@/lib/actions/thread.actions";
 
 interface Props {
   userId: string;
@@ -28,21 +28,18 @@ function PostThread({ userId }: Props) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const { organization } = useOrganization();
-
-  const form = useForm<z.infer<typeof ThreadValidation>>({
-    resolver: zodResolver(ThreadValidation),
+  const form = useForm<z.infer<typeof BlogValidation>>({
+    resolver: zodResolver(BlogValidation),
     defaultValues: {
       thread: "",
       accountId: userId,
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
-    await createThread({
+  const onSubmit = async (values: z.infer<typeof BlogValidation>) => {
+    await createBlog({
       text: values.thread,
       author: userId,
-      communityId: organization ? organization.id : null,
       path: pathname,
       likes: new Array<any>(),
     });

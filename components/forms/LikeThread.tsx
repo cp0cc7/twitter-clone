@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  addLikeToThread,
+  addLikeToBlog,
   retrieveThreadLikes,
 } from "@/lib/actions/thread.actions";
 import Image from "next/image";
@@ -32,7 +32,7 @@ const LikeThread = ({
           <Image
             id={"LikeHeartImage"}
             onClick={async () => {
-              await addLikeToThread(threadId, currentUserId, pathname);
+              await addLikeToBlog(threadId, currentUserId, pathname);
               if (!currentUserLiked) {
                 document
                   .getElementById("LikeHeartImage")

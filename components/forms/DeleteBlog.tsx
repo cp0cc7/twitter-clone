@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
-import { deleteThread } from "@/lib/actions/thread.actions";
+import { deleteBlog } from "@/lib/actions/thread.actions";
 
 interface Props {
   threadId: string;
@@ -13,7 +13,7 @@ interface Props {
   isComment?: boolean;
 }
 
-function DeleteThread({
+function DeleteBlog({
   threadId,
   currentUserId,
   authorId,
@@ -33,7 +33,7 @@ function DeleteThread({
       height={18}
       className="cursor-pointer object-contain"
       onClick={async () => {
-        await deleteThread(JSON.parse(threadId), pathname);
+        await deleteBlog(JSON.parse(threadId), pathname);
         if (!parentId || !isComment) {
           router.push("/");
         }
@@ -42,4 +42,4 @@ function DeleteThread({
   );
 }
 
-export default DeleteThread;
+export default DeleteBlog;

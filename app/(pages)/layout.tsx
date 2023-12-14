@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { Lato } from "next/font/google";
+import { Roboto_Mono } from "next/font/google";
 
 import "../globals.css";
 import LeftSidebar from "@/components/shared/LeftSidebar";
@@ -27,14 +28,22 @@ export default function RootLayout({
       }}
     >
       <html lang="en">
-        <body className="lato">
+        <head>
+          <link rel="stylesheet" href="../globals.css" />
+        </head>
+        <body className="Raleway">
           <Topbar />
-          <main className="flex flex-row">
+          <main className="flex">
             <LeftSidebar />
-            <section className="main-container">
-              <div className="w-full max-w-4xl">{children}</div>
+            <section
+              className="main-container"
+              style={{ fontFamily: "Raleway, sans-serif" }}
+            >
+              <div className=" w-full justify-content:flex-end max-w-4xl">
+                {children}
+              </div>
             </section>
-            {/* @ts-ignore */}
+
             <RightSidebar />
           </main>
           <Bottombar />

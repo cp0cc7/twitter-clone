@@ -9,6 +9,7 @@ import Thread from "../models/thread.model";
 import User from "../models/user.model";
 import Community from "../models/community.model";
 import { threadId } from "worker_threads";
+import { fetchUser } from "./useractions";
 
 export async function fetchEvents(pageNumber = 1, pageSize = 5) { // page size set to 5 for now.
   connectToDB();
@@ -23,12 +24,8 @@ export async function fetchEvents(pageNumber = 1, pageSize = 5) { // page size s
     .limit(pageSize)
     .populate({
       path: "organiser",
-      model: Event,
+      model: User,
     })
-    .populate({
-      path: "eventName",
-      model: Event,
-    });
 
   const totalEventsCount = await Event.countDocuments({
     parentId: { $in: [null, undefined] },
@@ -43,21 +40,20 @@ export async function fetchEvents(pageNumber = 1, pageSize = 5) { // page size s
 
 interface Params { //add more relevant fields here
   eventName: string,
-  organiser: string,
+  organiserId: string,
   description: string | null,
   house: string | null,
   form: string | null,
-  path: string,
   date: Date,
   imagePath: string,
   interestedPeople: Array<any>
 }
 
-export async function createEvent({ eventName, organiser, description, house, form, interestedPeople, date, imagePath, path }: Params
+export async function createEvent({ eventName, organiserId, description, house, form, interestedPeople, date, imagePath }: Params
 ) {
   try {
     connectToDB();
-
+    let organiser = (await fetchUser(organiserId))._id;
     const createdEvent = await Event.create({
       eventName,
       organiser,
@@ -75,13 +71,12 @@ export async function createEvent({ eventName, organiser, description, house, fo
       $push: { events: createdEvent._id },
     });
 
-    revalidatePath(path); //ensures changes update automatically
   } catch (error: any) {
     throw new Error(`Failed to create event: ${error.message}`);
   }
 }
 
-export async function deleteEvent(id: string, path: string): Promise<void> {
+export async function deleteEvent(id: string): Promise<void> {
   try {
     connectToDB();
 
@@ -112,7 +107,6 @@ export async function deleteEvent(id: string, path: string): Promise<void> {
       { $pull: { events: mainEvent._id } }
     );
 
-    revalidatePath(path);
   } catch (error: any) {
     throw new Error(`Failed to delete event: ${error.message}`);
   }
