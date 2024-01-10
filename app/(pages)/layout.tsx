@@ -6,10 +6,10 @@ import { Lato } from "next/font/google";
 import { Roboto_Mono } from "next/font/google";
 
 import "../globals.css";
-import LeftSidebar from "@/components/shared/LeftSidebar";
-import Bottombar from "@/components/shared/Bottombar";
-import RightSidebar from "@/components/shared/RightSidebar";
-import Topbar from "@/components/shared/Topbar";
+import LeftSidebar from "@/components/page-parts/LeftSidebar";
+import Bottombar from "@/components/page-parts/Bottombar";
+import RightSidebar from "@/components/page-parts/RightSidebar";
+import Topbar from "@/components/page-parts/Topbar";
 
 export const metadata: Metadata = {
   title: "Calday Blog",
@@ -52,4 +52,4 @@ export default function RootLayout({
     </ClerkProvider>
   );
 }
-//Topbar with left and RightSidebar embedded into the interface, this ensures they stay on all pages. All of the Bars are imported from components/shared
+//Topbar with left and RightSidebar embedded into the interface, this ensures they stay on all pages. All of the Bars are imported from components/page-parts

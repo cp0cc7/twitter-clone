@@ -18,13 +18,13 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
 import { BlogValidation } from "@/lib/validations/thread";
-import { createBlog } from "@/lib/actions/thread.actions";
+import { createBlog } from "@/lib/actions/blog.actions";
 
 interface Props {
   userId: string;
 }
 
-function PostThread({ userId }: Props) {
+function PostBlog({ userId }: Props) {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -58,9 +58,7 @@ function PostThread({ userId }: Props) {
           name="thread"
           render={({ field }) => (
             <FormItem className="flex w-full flex-col gap-3">
-              <FormLabel className="text-base-semibold text-light-2">
-                Subject
-              </FormLabel>
+              <FormLabel className=" text-light-1 font-bold">Subject</FormLabel>
               <FormControl className="no-focus border border-white bg-main-color text-light-1">
                 <Textarea rows={15} {...field} />
               </FormControl>
@@ -77,4 +75,4 @@ function PostThread({ userId }: Props) {
   );
 }
 
-export default PostThread;
+export default PostBlog;

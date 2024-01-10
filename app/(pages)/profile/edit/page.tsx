@@ -1,7 +1,7 @@
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-import AccountProfile from "@/components/forms/AccountProfile";
+import AccountProfile from "@/components/interactions/AccountProfile";
 import { fetchUser } from "@/lib/actions/useractions";
 
 // Same code as Get started page only updated text at the bottom

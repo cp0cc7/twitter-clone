@@ -67,7 +67,7 @@ const FollowUserButton = ({
           ? "Follows you"
           : targetFollowers.includes(currentUserID) &&
             targetFollowing.includes(targetUserID)
-          ? "Following each other"
+          ? "Friends"
           : currentUserFollowingTargetUser &&
             !targetFollowing.includes(currentUserID)
           ? "Following"

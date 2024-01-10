@@ -4,8 +4,8 @@ import { redirect } from "next/navigation";
 
 import { profileTabs } from "@/constants";
 
-import ThreadsTab from "@/components/shared/ThreadsTab";
-import ProfileHeader from "@/components/shared/ProfileHeader";
+import ThreadsTab from "@/components/page-parts/ThreadsTab";
+import ProfileHeader from "@/components/page-parts/ProfileHeader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fetchUser } from "@/lib/actions/useractions";
 
@@ -16,19 +16,18 @@ async function Page({ params }: { params: { id: string } }) {
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect("/completeprofile");
 
-  // Filter out the "Posts" tab from the rendering
   const filteredTabs = profileTabs.filter((tab) => tab.label !== "Posts");
 
   return (
     <section>
-      <ProfileHeader //added forms and house here
+      <ProfileHeader
         accountId={userInfo.id}
         authUserId={user.id}
         name={userInfo.name}
         username={userInfo.username}
         imgUrl={userInfo.image}
         bio={userInfo.bio}
-        form={userInfo.form ? userInfo.form : ""} //added for validation
+        form={userInfo.form ? userInfo.form : ""}
         house={userInfo.house ? userInfo.house : ""}
         following={userInfo.following ? userInfo.following : []}
         followers={userInfo.followers ? userInfo.followers : []}

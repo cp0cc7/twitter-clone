@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import FollowUserButton from "../forms/FollowUserButton";
+import FollowUserButton from "../interactions/FollowUserButton";
 
 interface Props {
   accountId: string;
@@ -59,7 +59,7 @@ const ProfileHeader = ({
                 height={20}
               />
 
-              <p className="text-white max-sm:hidden">Edit</p>
+              <p className="text-white max-sm:hidden">Edit Profile</p>
             </div>
           </Link>
         )}

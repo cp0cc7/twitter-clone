@@ -7,11 +7,10 @@ import { connectToDB } from "../mongoose";
 import Event from "../models/event.model";
 import Thread from "../models/thread.model";
 import User from "../models/user.model";
-import Community from "../models/community.model";
 import { threadId } from "worker_threads";
 import { fetchUser } from "./useractions";
 
-export async function fetchEvents(pageNumber = 1, pageSize = 5) { // page size set to 5 for now.
+export async function fetchEvents(pageNumber = 1, pageSize = 100) { // page size set to 5 for now.
   connectToDB();
 
   // calculate number of posts to skip based on the page number size
@@ -38,7 +37,7 @@ export async function fetchEvents(pageNumber = 1, pageSize = 5) { // page size s
   return { events, isNext };
 }
 
-interface Params { //add more relevant fields here
+interface Params { 
   eventName: string,
   organiserId: string,
   description: string | null,
@@ -66,7 +65,6 @@ export async function createEvent({ eventName, organiserId, description, house, 
     });
     
 
-    // Update User model
     await User.findByIdAndUpdate(organiser, {
       $push: { events: createdEvent._id },
     });
@@ -80,7 +78,6 @@ export async function deleteEvent(id: string): Promise<void> {
   try {
     connectToDB();
 
-    // Find the thread to be deleted (the main thread)
     const mainEvent = await Event.findById(id).populate({
         path: "organiser",
         model: User,
@@ -94,14 +91,12 @@ export async function deleteEvent(id: string): Promise<void> {
       throw new Error("Thread not found");
     }
 
-    // Extract the authorIds and communityIds to update User and Community models respectively
     const uniqueOrganiserIds = new Set(
       [
         mainEvent.organiser?._id?.toString(),
       ].filter((id) => id !== undefined)
     );
 
-    // Update User model
     await User.updateMany(
       { _id: { $in: Array.from(uniqueOrganiserIds) } },
       { $pull: { events: mainEvent._id } }
@@ -115,7 +110,7 @@ export async function deleteEvent(id: string): Promise<void> {
 export async function fetchEventById(eventId: string) {
   connectToDB();
 
-  try { // might want more population here depending on what needs to be accessed.$bitsAllClear
+  try { 
     const event = await Event.findById(eventId)
       .populate({
         path: "event",

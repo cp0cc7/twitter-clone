@@ -4,14 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { formatDateString } from "@/lib/utils";
-import LikeThread from "../forms/LikeThread";
-import InlineFollowUserButton from "../forms/InlineFollowUserButton";
+import LikeBlog from "../interactions/LikeBlog";
+import InlineFollowUserButton from "../interactions/InlineFollowUserButton";
 import {
   fetchUser,
   fetchUserFollowing,
   fetchUserFollowers,
 } from "@/lib/actions/useractions";
-import DeleteBlog from "../forms/DeleteBlog";
+import DeleteBlog from "../interactions/DeleteBlog";
 
 interface Props {
   id: string;
@@ -23,11 +23,6 @@ interface Props {
     image: string;
     id: string;
   };
-  community: {
-    id: string;
-    name: string;
-    image: string;
-  } | null;
   createdAt: string;
   comments: {
     author: {
@@ -44,7 +39,6 @@ async function ThreadCard({
   parentId,
   content,
   author,
-  community,
   createdAt,
   comments,
   isComment,
@@ -55,10 +49,10 @@ async function ThreadCard({
   }
   return (
     <article
-      className={`flex w-full flex-col relative ${
+      className={` ml-5 rounded-2xl flex w-full flex-col relative ${
         isComment ? "px-0 xs:px-7" : "bg-post-color p-7"
       } ${
-        !isComment ? "mb-[-35px] z-10 border border-gray-300" : "" // Add border styles for non-comment posts
+        !isComment ? "mb-[-20px] z-10 border border-gray-300" : "" // Add border styles for non-comment posts
       }`}
     >
       <div className="flex items-start justify-between">
@@ -92,13 +86,13 @@ async function ThreadCard({
             <p className="mt-2 text-small-regular text-light-2">{content}</p>
 
             <div className=" mt-5 flex  gap-3">
-              <LikeThread
+              <LikeBlog
                 likes={likes}
                 threadId={id}
                 currentUserId={currentUserId}
               />
 
-              <Link href={`/thread/${id}`}>
+              <Link href={`/blog/${id}`}>
                 <Image
                   src="/assets/message.png"
                   alt="reply"
@@ -129,7 +123,7 @@ async function ThreadCard({
                   )}
                 </p>
               ) : (
-                <p className="mt-1 text-subtle-medium text-white">No replies</p>
+                <p className="mt-1 text-small-regular text-white">No replies</p>
               )}
               <DeleteBlog
                 threadId={JSON.stringify(id)}
@@ -139,8 +133,10 @@ async function ThreadCard({
                 isComment={isComment}
               />
             </div>
-            <div className={`${isComment && "mb-10"} mt-2 `}>
-              <p className=" text-subtle-medium text-white ">
+            <div
+              className={`${isComment && "mb-10"} mt-2 absolute top-2 right-2 `}
+            >
+              <p className="text-small-regular text-white ">
                 {formatDateString(createdAt)}
               </p>
             </div>

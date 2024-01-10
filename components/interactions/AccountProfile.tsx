@@ -51,7 +51,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       profile_photo: user?.image ? user.image : "",
       name: user?.name ? user.name : "",
       username: user?.username ? user.username : "",
-      house: user?.house ? user.house : "Holywell", // Set default value for 'house'
+      house: user?.house ? user.house : "Hollowell", // Set default value for 'house'
       form: user?.form ? user.form : "",
       bio: user?.bio ? user.bio : "",
     },

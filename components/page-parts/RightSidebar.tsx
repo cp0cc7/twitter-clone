@@ -10,7 +10,7 @@ async function RightSidebar() {
 
   const renderEvents = () => {
     return (
-      <div className="community-card mt-6">
+      <div className="background-card mt-6">
         <h2 className="head-text">Upcoming Events</h2>
         {result.events.map(async (event, index) => {
           console.log("staged"); //this isn't printing. why?

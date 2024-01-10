@@ -18,7 +18,7 @@ export const sidebarLinks = [
     },
     {
       imgURL: "/assets/new-svgrepo-com.svg",
-      route: "/create-thread",
+      route: "/create-blog",
       label: "",
     },
       {
@@ -33,8 +33,3 @@ export const sidebarLinks = [
     { value: "threads", label: "Posts", icon: "/assets/message.png" },
   ];
   
-  export const communityTabs = [
-    { value: "threads", label: "Threads", icon: "/assets/reply.svg" },
-    { value: "members", label: "Members", icon: "/assets/members.svg" },
-    { value: "requests", label: "Requests", icon: "/assets/request.svg" },
-  ];

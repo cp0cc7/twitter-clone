@@ -2,8 +2,8 @@ import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs";
 
 import UserCard from "@/components/cards/UserCard";
-import Searchbar from "@/components/shared/Searchbar";
-import Pagination from "@/components/shared/Pagination";
+import Searchbar from "@/components/page-parts/Searchbar";
+import Pagination from "@/components/page-parts/Pagination";
 import { fetchUser, fetchUsers } from "@/lib/actions/useractions";
 
 async function Page({
@@ -26,8 +26,9 @@ async function Page({
 
   return (
     <section>
-      <h1 className="head-text mb-10">Search</h1>
-
+      <div className="container mb-4">
+        <h1 className="title-card">Search</h1>
+      </div>
       <Searchbar routeType="search" />
 
       <div className="mt-14 flex flex-col gap-9">

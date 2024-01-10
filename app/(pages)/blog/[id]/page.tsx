@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs";
 
-import Comment from "@/components/forms/Comment";
+import Comment from "@/components/interactions/Comment";
 import ThreadCard from "@/components/cards/ThreadCard";
 
-import { fetchBlogById } from "@/lib/actions/thread.actions";
+import { fetchBlogById } from "@/lib/actions/blog.actions";
 import { fetchUser } from "@/lib/actions/useractions";
 
 export const revalidate = 0;
@@ -29,7 +29,6 @@ async function page({ params }: { params: { id: string } }) {
           parentId={thread.parentId}
           content={thread.text}
           author={thread.author}
-          community={thread.community}
           createdAt={thread.createdAt}
           comments={thread.children}
           likes={thread.likes}
@@ -53,7 +52,6 @@ async function page({ params }: { params: { id: string } }) {
             parentId={childItem.parentId}
             content={childItem.text}
             author={childItem.author}
-            community={childItem.community}
             createdAt={childItem.createdAt}
             comments={childItem.children}
             isComment

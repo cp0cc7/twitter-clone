@@ -30,41 +30,46 @@
 
 
 
-        /* main */
+        
         .main-container {
             @apply flex min-h-screen flex-1 flex-col items-center bg-container-color px-6 pb-10 pt-28 max-md:pb-32 sm:px-10;
         }
 
-        /* Head Text */
         .head-text {
             @apply text-heading2-bold text-light-1;
         }
 
-        /* Activity */
         .activity-card {
             @apply flex items-center gap-2 rounded-md bg-activity-color px-7 py-4;
         }
 
-        /* No Result */
         .no-result {
             @apply text-center !text-base-regular text-light-1;
         }   
 
-        /* Community Card */
-        .community-card {
+        .background-card {
             @apply w-full rounded-lg bg-activity-color px-4 py-5 sm:w-96;
         }
 
-        .community-card_btn {
+        .background-card_btn {
             @apply rounded-lg bg-white  px-5 py-1.5 text-small-regular !text-light-1 !important;
         }
 
-        /* thread card  */
+        .title-card {
+            @apply w-full rounded-lg bg-activity-color sm:w-96 head-text text-center text-heading1-bold;
+          }
+
+          .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+          }
+
         .thread-card_bar {
             @apply relative mt-2 w-0.5 grow rounded-full bg-main-color;
         }
 
-        /* User card */
         .user-card {
             @apply flex flex-col justify-between gap-4 max-xs:rounded-xl max-xs:bg-activity-color max-xs:p-4 xs:flex-row xs:items-center;
         }
@@ -74,7 +79,7 @@
         }
 
         .user-card_btn {
-            @apply h-auto min-w-[74px] rounded-lg bg-btn-color text-[12px] text-light-1 !important;
+            @apply h-auto min-w-[74px] rounded-lg bg-btn-color text-[12px] text-base-semibold text-light-1 !important;
         }
 
         .searchbar {
@@ -143,7 +148,6 @@
         }
     }
 
-    /* Clerk Responsive fix */
     .cl-organizationSwitcherTrigger .cl-userPreview .cl-userPreviewTextContainer {
         @apply max-sm:hidden;
     }
@@ -152,9 +156,7 @@
         @apply max-sm:hidden;
     }
 
-    /* Shadcn Component Styles */
-
-    /* Tab */
+  
     .tab {
         @apply flex min-h-[50px] flex-1 items-center gap-3 bg-container-color text-dark-2 data-[state=active]:bg-[#0e0e12] data-[state=active]:text-light-2 !important;
     }
@@ -163,7 +165,6 @@
         @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
     }
 
-    /* Account Profile  */
     .account-form_image-label {
         @apply flex h-24 w-24 items-center justify-center rounded-full bg-container-color !important;
     }
@@ -176,7 +177,6 @@
         @apply border bg-container-color bg-main-color text-light-1 !important;
     }
 
-    /* Comment Form */
     .comment-form {
         @apply mt-10 flex items-center gap-4 border-y border-y-indigo-200 py-5 max-xs:flex-col !important;
     }
@@ -185,128 +185,82 @@
         @apply rounded-3xl bg-post-color px-8 py-2 !text-small-regular text-light-1 max-xs:w-full !important;
     }
 
-    /* globals.css */
     @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap&subset=latin');
 
     .lato {
     font-family: 'Lato', sans-serif;
-    /* Additional styles if needed */
-    }
-
-
-
-    /* Add your custom styles for the calendar */
-    .custom-calendar {
-        width: 300px; /* Example width */
-        font-family: Arial, sans-serif; /* Example font */
-        border: 1px solid #ccc; /* Example border */
-        border-radius: 5px; /* Example border radius */
     }
     
-    .custom-calendar .react-calendar__tile--now {
-        background-color: #ffcc00; /* Example style for the current day */
-    }
-    
-    .custom-calendar .react-calendar__tile--active {
-        background-color: #e6e6e6; /* Example style for the selected day */
-    }
-    
-    /* Container styles for the calendar */
-    .custom-calendar-container {
-        margin-right: 20px; /* Example margin for the container */
-    }
-    
-    /* Add your custom styles for the calendar */
-    .custom-calendar {
-        /* Your custom calendar styles */
-    }
-    
-    .custom-calendar-container {
-        /* Container styles for the calendar */
-    }
-    
-    /* Styles for Add Event box */
     .activity-card {
-        margin-bottom: 10px; /* Adjusted margin */
+        margin-bottom: 10px; 
     }
     
     .activity-card input[type="text"] {
-        width: 150px; /* Example width for the input */
-        padding: 8px; /* Example padding for the input */
+        width: 150px; 
+        padding: 8px; 
     }
     
     .comment-form_btn {
-        width: 100px; /* Example width for the button */
-        padding: 6px; /* Example padding for the button */
-        background-color: rgb(135, 37, 50); /* Example background color for the button */
-        color: white; /* Text color */
-        border: none; /* Remove border */
+        width: 100px;
+        padding: 6px; 
+        background-color: rgb(135, 37, 50); 
+        color: white; 
+        border: none; 
     }
     
-    /* Styles for added events */
+    
     .user-card {
-        background-color: rgb(135, 37, 50); /* Example background color for added events */
-        color: white; /* Text color */
-        padding: 8px; /* Example padding for added events */
-        margin-bottom: 5px; /* Adjusted margin */
+        background-color: rgb(135, 37, 50); 
+        color: white; 
+        padding: 8px; 
+        margin-bottom: 5px; 
     }
     
-    /* Add your custom styles for the calendar */
-    .custom-calendar {
-        /* Your custom calendar styles */
-    }
-    
-    .custom-calendar-container {
-        /* Container styles for the calendar */
-    }
-    
-    /* Styles for Add Event box */
+  
     .activity-card {
         margin-bottom: 10px;
-        padding-right: 5px; /* Adjusted margin */
+        padding-right: 5px; 
     }
     
     .input-text {
-        width: 150px; /* Example width for the input */
-        padding: 8px; /* Example padding for the input */
-        background-color: transparent; /* Set the background color to transparent */
-        border: none; /* Remove the border */
-        border-bottom: 1px solid #ccc; /* Add a bottom border for visibility */
-        outline: none; /* Remove the outline */
+        width: 150px;
+        padding: 8px; 
+        background-color: transparent;
+        border: none; 
+        border-bottom: 1px solid #ccc; 
+        outline: none;
     }
     
     
     .comment-form_btn {
-        white-space: nowrap; /* Prevent text from wrapping */
-        padding: 6px 12px; /* Example padding for the button - adjust as needed */
-        background-color: rgb(162, 116, 121); /* Example background color for the button */
-        color: white; /* Text color */
-        border: none; /* Remove border */
-        display: inline-block; /* Ensure button is inline */
+        white-space: nowrap;
+        padding: 6px 12px; 
+        background-color: rgb(162, 116, 121); 
+        color: white; 
+        border: none;
+        display: inline-block; 
     }
     
     
-    /* Styles for added events */
+    
     .user-card {
-        background-color: rgb(135, 37, 50); /* Example background color for added events */
-        color: white; /* Text color */
-        padding: 8px; /* Example padding for added events */
-        margin-bottom: 5px; /* Adjusted margin */
+        background-color: rgb(135, 37, 50);
+        color: white; 
+        padding: 8px; 
+        margin-bottom: 5px; 
     }
     
-    /* CSS file or your styles */
     .thread-card-wrapper {
-        border: 1px solid #ccc; /* Adjust border styles as needed */
-        padding: 10px; /* Optional: Add padding around each ThreadCard */
-        /* Other styles... */
+        border: 1px solid #ccc; 
+        padding: 10px; 
+       
     }
     
-    /* fonts.css */
     @font-face {
         font-family: 'Raleway';
         font-style: normal;
         font-weight: 400;
         src: url('C:\Users\ctcco\Downloads\raleway\static\Raleway-Regualar.ttf') format('truetype');
-        /* Update the path to point to your Roboto Mono font file */
+        
     }
     

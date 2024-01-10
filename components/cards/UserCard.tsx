@@ -16,8 +16,6 @@ interface Props {
 function UserCard({ id, name, username, imgUrl, personType }: Props) {
   const router = useRouter();
 
-  const isCommunity = personType === "Community";
-
   return (
     <article className="user-card">
       <div className="user-card_avatar">
@@ -39,14 +37,10 @@ function UserCard({ id, name, username, imgUrl, personType }: Props) {
       <Button
         className="user-card_btn"
         onClick={() => {
-          if (isCommunity) {
-            router.push(`/communities/${id}`);
-          } else {
-            router.push(`/profile/${id}`);
-          }
+          router.push(`/profile/${id}`);
         }}
       >
-        View
+        Visit Profile
       </Button>
     </article>
   );

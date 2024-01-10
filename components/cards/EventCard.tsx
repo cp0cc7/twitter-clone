@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { formatDateString } from "@/lib/utils";
-import DeleteEventButton from "../forms/DeleteEventButton";
-import LikeThread from "../forms/LikeThread";
-import InlineMarkInterestButton from "../forms/InlineMarkInterestButton";
+import DeleteEventButton from "../interactions/DeleteEventButton";
+import LikeBlog from "../interactions/LikeBlog";
+import InlineMarkInterestButton from "../interactions/InlineMarkInterestButton";
 import {
   fetchEvents,
   fetchInterestedPeople,

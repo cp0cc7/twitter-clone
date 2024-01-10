@@ -1,15 +1,12 @@
 "use client";
 
-import {
-  addLikeToBlog,
-  retrieveThreadLikes,
-} from "@/lib/actions/thread.actions";
+import { addLikeToBlog, retrieveBlogLikes } from "@/lib/actions/blog.actions";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { boolean } from "zod";
 
-const LikeThread = ({
+const LikeBlog = ({
   //re-add await after fixing try-catch statement to include default state.
   likes,
   threadId,
@@ -80,4 +77,4 @@ const LikeThread = ({
   }
 };
 
-export default LikeThread;
+export default LikeBlog;

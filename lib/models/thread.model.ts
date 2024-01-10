@@ -34,6 +34,6 @@ const threadSchema = new mongoose.Schema({
   }
 });
 
-const Thread = mongoose.models.Thread || mongoose.model("Thread", threadSchema);
+const Thread = mongoose.models.Thread || mongoose.model("Thread", threadSchema); //change this constant to blog and that will let me use blog elsewhere
 
 export default Thread;

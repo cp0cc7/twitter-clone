@@ -2,13 +2,12 @@ import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 import ThreadCard from "@/components/cards/ThreadCard";
-import Pagination from "@/components/shared/Pagination";
+import Pagination from "@/components/page-parts/Pagination";
 
-import { getBlogs } from "@/lib/actions/thread.actions";
+import { getBlogs } from "@/lib/actions/blog.actions";
 import { fetchUser } from "@/lib/actions/useractions";
 
-async function Home({
-  //the other most surface-level reference to the threadlikes.
+async function LandingPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string | undefined };
@@ -23,11 +22,12 @@ async function Home({
 
   return (
     <>
-      <h1 className="head-text text-left text-lg">Whats Happening</h1>
-
-      <section className="mt-9 flex flex-col gap-10">
+      <div className="container">
+        <h1 className="title-card">Whats Happening</h1>
+      </div>
+      <section className=" mt-7 flex flex-col gap-10 rounded-lg ">
         {result.posts.length === 0 ? (
-          <p className="no-result">No posts found</p>
+          <p className="no-result">No blogs here yet</p>
         ) : (
           <>
             {result.posts.map((post) => (
@@ -38,7 +38,6 @@ async function Home({
                 parentId={post.parentId}
                 content={post.text}
                 author={post.author}
-                community={post.community}
                 createdAt={post.createdAt}
                 comments={post.children}
                 likes={post.likes}
@@ -57,4 +56,4 @@ async function Home({
   );
 }
 
-export default Home;
+export default LandingPage;
