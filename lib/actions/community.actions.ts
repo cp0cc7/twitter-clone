@@ -1,4 +1,4 @@
-"use server";
+/*"use server";
 
 import { FilterQuery, SortOrder } from "mongoose";
 
@@ -301,4 +301,4 @@ export async function deleteCommunity(communityId: string) {
     console.error("Error deleting community: ", error);
     throw error;
   }
-}
+}*/

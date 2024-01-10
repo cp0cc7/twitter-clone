@@ -46,9 +46,9 @@ export async function deleteBlog(id: string, path: string): Promise<void> {
     connectToDB();
 
 
-    const mainThread = await Thread.findById(id).populate("author");
+    const mainBlog = await Thread.findById(id).populate("author");
 
-    if (!mainThread) {
+    if (!mainBlog) {
       throw new Error("Blog cannot be found");
     }
 
@@ -62,8 +62,8 @@ export async function deleteBlog(id: string, path: string): Promise<void> {
 
     const uniqueAuthorIds = new Set(
       [
-        ...descendantThreads.map((thread) => thread.author?._id?.toString()), // Use optional chaining to handle possible undefined values
-        mainThread.author?._id?.toString(),
+        ...descendantThreads.map((thread) => thread.author?._id?.toString()),
+        mainBlog.author?._id?.toString(),
       ].filter((id) => id !== undefined)
     );
 

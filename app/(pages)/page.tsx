@@ -1,7 +1,7 @@
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-import ThreadCard from "@/components/cards/ThreadCard";
+import BlogCard from "@/components/cards/BlogCard";
 import Pagination from "@/components/page-parts/Pagination";
 
 import { getBlogs } from "@/lib/actions/blog.actions";
@@ -31,7 +31,7 @@ async function LandingPage({
         ) : (
           <>
             {result.posts.map((post) => (
-              <ThreadCard
+              <BlogCard
                 key={post._id}
                 id={post._id}
                 currentUserId={user.id}

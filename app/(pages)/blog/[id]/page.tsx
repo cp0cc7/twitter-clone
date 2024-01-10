@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs";
 
 import Comment from "@/components/interactions/Comment";
-import ThreadCard from "@/components/cards/ThreadCard";
+import BlogCard from "@/components/cards/BlogCard";
 
 import { fetchBlogById } from "@/lib/actions/blog.actions";
 import { fetchUser } from "@/lib/actions/useractions";
@@ -23,7 +23,7 @@ async function page({ params }: { params: { id: string } }) {
   return (
     <section className="relative">
       <div>
-        <ThreadCard
+        <BlogCard
           id={thread._id}
           currentUserId={user.id}
           parentId={thread.parentId}
@@ -45,7 +45,7 @@ async function page({ params }: { params: { id: string } }) {
 
       <div className="mt-10">
         {thread.children.map((childItem: any) => (
-          <ThreadCard
+          <BlogCard
             key={childItem._id}
             id={childItem._id}
             currentUserId={user.id}

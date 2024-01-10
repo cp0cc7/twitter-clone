@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 
 import { fetchUserThreads } from "@/lib/actions/useractions";
 
-import ThreadCard from "../cards/ThreadCard";
+import BlogCard from "../cards/BlogCard";
 import { fetchUserPosts } from "@/lib/actions/useractions";
 
 interface Result {
@@ -49,7 +49,7 @@ const ThreadsTab = async ({ currentUserId, accountId, accountType }: Props) => {
     <section className="className='mt-9 flex flex-col gap-10">
       {result.threads.map((thread: any) => {
         return (
-          <ThreadCard
+          <BlogCard
             key={thread._id}
             id={thread._id}
             currentUserId={currentUserId}

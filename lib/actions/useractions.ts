@@ -44,7 +44,7 @@ export async function fetchUserFollowers(userId: string) {
   }
 }
 
-interface Params { //destructed the values of the object to make it less error prone. we can now pass the objects in any order. Links to account profile
+interface Params { 
   userId: string;
   username: string;
   name: string;
@@ -79,7 +79,7 @@ export async function updateUser({
         image,
         onboarded: true,
       },
-      { upsert: true } //updates and inserts user into db
+      { upsert: true } 
     );
 
     if (path === "/profile/edit") {
@@ -122,7 +122,6 @@ export async function fetchUserPosts(userId: string) {
   try {
     connectToDB();
 
-    // Find all threads authored by the user with the given userId
     const threads = await User.findOne({ id: userId }).populate({
       path: "threads",
       model: Thread,

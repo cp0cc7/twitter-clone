@@ -44,13 +44,11 @@ async function EventCard({
   interestedPeople,
 }: Props) {
   if (!organiser || !organiser.id) {
-    return null; // Return or render an appropriate fallback if author or author.id is null/undefined
+    return null; //return null if no organiser
   }
   return (
     <article
-      className={`flex w-full flex-col relative ${
-        "mb-[-20px] z-10 border border-gray-300 rounded-md" // Add border styles for non-comment posts
-      }`}
+      className={`flex w-full flex-col relative ${"mb-[-20px] z-10 border border-gray-300 rounded-md"}`}
     >
       <div className="flex items-start justify-between">
         <div className="flex w-full flex-1 flex-row gap-4">

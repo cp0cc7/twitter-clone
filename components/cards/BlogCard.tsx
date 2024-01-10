@@ -30,10 +30,10 @@ interface Props {
     };
   }[];
   isComment?: boolean;
-  likes: Array<any>; //this is never actually initialised anywhere, its just constantly referenced but only ever with its param type, not the actual started object
+  likes: Array<any>;
 }
 
-async function ThreadCard({
+async function BlogCard({
   id,
   currentUserId,
   parentId,
@@ -45,15 +45,13 @@ async function ThreadCard({
   likes,
 }: Props) {
   if (!author || !author.id) {
-    return null; // Return or render an appropriate fallback if author or author.id is null/undefined
+    return null;
   }
   return (
     <article
       className={` ml-5 rounded-2xl flex w-full flex-col relative ${
         isComment ? "px-0 xs:px-7" : "bg-post-color p-7"
-      } ${
-        !isComment ? "mb-[-20px] z-10 border border-gray-300" : "" // Add border styles for non-comment posts
-      }`}
+      } ${!isComment ? "mb-[-20px] z-10 border border-gray-300" : ""}`}
     >
       <div className="flex items-start justify-between">
         <div className="flex w-full flex-1 flex-row gap-4">
@@ -147,7 +145,7 @@ async function ThreadCard({
   );
 }
 
-export default ThreadCard;
+export default BlogCard;
 
 function logError(message: string) {
   console.log(message);

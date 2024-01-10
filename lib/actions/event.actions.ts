@@ -1,16 +1,13 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 
 import { connectToDB } from "../mongoose";
 
 import Event from "../models/event.model";
-import Thread from "../models/thread.model";
 import User from "../models/user.model";
-import { threadId } from "worker_threads";
 import { fetchUser } from "./useractions";
 
-export async function fetchEvents(pageNumber = 1, pageSize = 100) { // page size set to 5 for now.
+export async function fetchEvents(pageNumber = 1, pageSize = 100) { // page size set to 100 for now.
   connectToDB();
 
   // calculate number of posts to skip based on the page number size
@@ -18,7 +15,7 @@ export async function fetchEvents(pageNumber = 1, pageSize = 100) { // page size
 
   // query original event posts.
   const eventsQuery = Event.find({ parentId: { $in: [null, undefined] } })
-    .sort({ date: "desc" }) //could be asc or desc, decide later.
+    .sort({ date: "asc" }) //could be asc or desc, decide later.
     .skip(skipAmount)
     .limit(pageSize)
     .populate({
@@ -88,7 +85,7 @@ export async function deleteEvent(id: string): Promise<void> {
       });
 
     if (!mainEvent) {
-      throw new Error("Thread not found");
+      throw new Error("");
     }
 
     const uniqueOrganiserIds = new Set(
@@ -124,8 +121,8 @@ export async function fetchEventById(eventId: string) {
 
     return event;
   } catch (err) {
-    console.error("Error while fetching thread:", err);
-    throw new Error("Unable to fetch thread");
+    console.error("Error while fetching event:", err);
+    throw new Error("Unable to fetch event");
   }
 }
 
@@ -162,7 +159,7 @@ export async function markInterested(
     }
     
   } catch (error: any) {
-    throw new Error(`Error adding like to thread: ${error.message}`);
+    throw new Error(`Error ${error.message}`);
   }
 }
 
