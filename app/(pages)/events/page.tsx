@@ -1,5 +1,5 @@
 "use server";
-import "../../globals.css"; // Adjust the path to import the globals.css file
+import "../../globals.css";
 import { createEvent, fetchEvents } from "@/lib/actions/event.actions";
 import { currentUser } from "@clerk/nextjs";
 import { fetchUsers } from "@/lib/actions/useractions";
@@ -12,8 +12,6 @@ interface Event {
 }
 
 async function EventsPage() {
-  //userId as param - function is export default so never passed.
-
   const user = await currentUser();
   if (!user) return null; //this feels wrong but it made it stop
 
