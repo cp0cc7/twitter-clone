@@ -38,7 +38,6 @@ interface Props {
   currentUserId: string;
   accountId: string;
   accountType: string;
-  community: string;
 }
 
 const ThreadsTab = async ({ currentUserId, accountId, accountType }: Props) => {
@@ -65,6 +64,7 @@ const ThreadsTab = async ({ currentUserId, accountId, accountType }: Props) => {
                     id: thread.author.id,
                   }
             }
+            //  community={thread.community}
             createdAt={thread.createdAt}
             comments={thread.children}
             likes={thread.likes}
